@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S10_NETCOREWebDPA.API", "S10_NETCOREWebDPA.API\S10_NETCOREWebDPA.API.csproj", "{EFB8634F-BF6C-493D-896F-24FC9B62B164}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S10_NETCoreWebDPA.Domain", "S10_NETCoreWebDPA.Domain\S10_NETCoreWebDPA.Domain.csproj", "{5BCCCD2D-D591-4159-9394-1713D19F475D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFB8634F-BF6C-493D-896F-24FC9B62B164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB8634F-BF6C-493D-896F-24FC9B62B164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB8634F-BF6C-493D-896F-24FC9B62B164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB8634F-BF6C-493D-896F-24FC9B62B164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BCCCD2D-D591-4159-9394-1713D19F475D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BCCCD2D-D591-4159-9394-1713D19F475D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BCCCD2D-D591-4159-9394-1713D19F475D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BCCCD2D-D591-4159-9394-1713D19F475D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34F6FF52-2A59-47E2-896A-0A7F0B86050B}
+	EndGlobalSection
+EndGlobal
