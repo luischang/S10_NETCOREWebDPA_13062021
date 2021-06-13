@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using S10_NETCoreWebDPA.Domain.Core.Interfaces;
 using S10_NETCoreWebDPA.Domain.Infrastructure.Data;
+using S10_NETCoreWebDPA.Domain.Infrastructure.Mapping;
 using S10_NETCoreWebDPA.Domain.Infrastructure.Repositoires;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,8 @@ namespace S10_NETCOREWebDPA.API
             });
 
             services.AddTransient<ICustomerRepository, CustomerRepository>();
+
+            services.AddAutoMapper(typeof(AutomapperProfile));
 
         }
 

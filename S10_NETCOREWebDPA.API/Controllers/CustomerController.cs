@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using S10_NETCoreWebDPA.Domain.Core.DTOs;
 using S10_NETCoreWebDPA.Domain.Core.Entities;
 using S10_NETCoreWebDPA.Domain.Core.Interfaces;
 using System;
@@ -14,10 +16,13 @@ namespace S10_NETCOREWebDPA.API.Controllers
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerRepository _customerRepository;
+        private readonly IMapper _mapper;
 
-        public CustomerController(ICustomerRepository customerRepository)
+        public CustomerController(ICustomerRepository customerRepository, IMapper mapper)
         {
             _customerRepository = customerRepository;
+            _mapper = mapper;
+
         }
 
 
@@ -26,7 +31,26 @@ namespace S10_NETCOREWebDPA.API.Controllers
         public async Task<IActionResult> GetCustomer()
         {
             var customers = await _customerRepository.GetCustomers();
-            return Ok(customers);
+
+            var customerList = _mapper.Map<IEnumerable<CustomerDTO>>(customers);
+
+            //var customerList = new List<CustomerDTO>();
+
+            //foreach (var item in customers)
+            //{
+            //    var customerDTO = new CustomerDTO()
+            //    {
+            //        Id = item.Id,
+            //        FirstName = item.FirstName,
+            //        LastName = item.LastName,
+            //        Country = item.Country,
+            //        City = item.City,
+            //        Phone = item.Phone
+            //    };
+            //    customerList.Add(customerDTO);
+            //}
+
+            return Ok(customerList);
 
         }
 
@@ -37,26 +61,40 @@ namespace S10_NETCOREWebDPA.API.Controllers
             var customer = await _customerRepository.GetCustomerById(id);
             if (customer == null)
                 return NotFound();
-            
+
             return Ok(customer);
         }
 
         [HttpPost]
         [Route("PostCustomer")]
-        public async Task<IActionResult> PostCustomer(Customer customer)
+        public async Task<IActionResult> PostCustomer(CustomerPostDTO customerPostDTO)
         {
+            var customer = _mapper.Map<Customer>(customerPostDTO);
+            
+            //var customer = new Customer()
+            //{
+            //    FirstName = customerPostDTO.FirstName,
+            //    LastName = customerPostDTO.LastName,
+            //    Country = customerPostDTO.Country,
+            //    City = customerPostDTO.City,
+            //    Phone = customerPostDTO.Phone
+            //};
+
             await _customerRepository.InsertCustomer(customer);
-            return Ok(customer);        
+
+            return Ok(customer);
         }
 
         [HttpPut]
         [Route("PutCustomer")]
-        public async Task<IActionResult> PutCustomer(Customer customer)
+        public async Task<IActionResult> PutCustomer(CustomerDTO customerDTO)
         {
+            var customer = _mapper.Map<Customer>(customerDTO);
+
             var result = await _customerRepository.UpdateCustomer(customer);
             if (!result)
-                return BadRequest();            
-            return Ok(new { result = "Success" });        
+                return BadRequest();
+            return Ok(new { result = "Success" });
         }
 
         [HttpDelete]
